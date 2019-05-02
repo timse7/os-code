@@ -1,5 +1,5 @@
 # OS Code
-Code for my operating system lecture at University of Klagenfurt
+Code for my operating system lecture at University of Klagenfurt (https://itec.aau.at/)
 
 ## badcnt.c
 Traditional badcnt.c program based on [ostep-code](https://github.com/remzi-arpacidusseau/ostep-code/tree/master/threads-intro)
