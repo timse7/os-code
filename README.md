@@ -1,6 +1,9 @@
 # OS Code
 Code for my operating system lecture at University of Klagenfurt (https://itec.aau.at/)
 
+## simple_pipe.c
+A simple example for fork + pipe
+
 ## badcnt.c
 Traditional badcnt.c program based on [ostep-code](https://github.com/remzi-arpacidusseau/ostep-code/tree/master/threads-intro)
 
