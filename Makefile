@@ -1,4 +1,4 @@
-targets = badcnt goodcnt goodcnt_mutex prodcons_mutex prodcons_sem simple_pipe
+targets = badcnt goodcnt goodcnt_mutex prodcons_mutex prodcons_sem simple_pipe shm
  
 CC = /usr/bin/gcc 
 CFLAGS = -Wall -pthread

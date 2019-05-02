@@ -4,6 +4,9 @@ Code for my operating system lecture at University of Klagenfurt (https://itec.a
 ## simple_pipe.c
 A simple example for fork + pipe
 
+## shm.c
+A simple shared memory example with race condition
+
 ## badcnt.c
 Traditional badcnt.c program based on [ostep-code](https://github.com/remzi-arpacidusseau/ostep-code/tree/master/threads-intro)
 
