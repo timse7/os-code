@@ -3,8 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//#include "common.h"
-
 #include <semaphore.h>
 
 #define BUFFERSIZE 10
@@ -29,6 +27,8 @@ prot_buffer_t *b;
 sem_t *mutex;
 
 void *producer(void *str) {
+  printf("[P] read characters and put into shared buffer (quit with 'E')...\n");
+
 #ifdef DEBUG
   printf("[P] %s started...\n", (char *)str);
 #endif
