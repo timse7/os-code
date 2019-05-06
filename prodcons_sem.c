@@ -6,7 +6,6 @@
 #include <semaphore.h>
 
 #define BUFFERSIZE 10
-//#define DEBUG
 
 /* 3 threads, one producer,
  * 2 consumers */

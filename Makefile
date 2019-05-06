@@ -1,6 +1,6 @@
 targets = badcnt goodcnt goodcnt_mutex prodcons_mutex prodcons_sem simple_pipe shm
  
-CC = /usr/bin/gcc 
+CC = /usr/bin/gcc
 CFLAGS = -Wall -pthread
 
 src = $(wildcard *.c)
