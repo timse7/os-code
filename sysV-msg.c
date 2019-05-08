@@ -25,7 +25,10 @@ void producer() {
   pmbuf.mtype = 1;
   for (;;) {
     printf(": ");
-    gets(pmbuf.message);
+    fgets(pmbuf.message, MSGSIZE, stdin);
+    if (pmbuf.message[strlen(pmbuf.message) - 1] == '\n')
+      pmbuf.message[strlen(pmbuf.message) - 1] = '\0';
+
     if (0 == strcmp("end", pmbuf.message)) {
       /* Tell consumer that we wish to end the show now */
       msgsnd(msqid, &pmbuf, MSGSIZE, 0);
