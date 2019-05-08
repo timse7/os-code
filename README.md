@@ -7,6 +7,9 @@ A simple example for fork + pipe
 ## shm.c
 A simple shared memory example with race condition
 
+## sysV-msg.c
+A simple System V message queues example
+
 ## badcnt.c
 Traditional badcnt.c program based on [ostep-code](https://github.com/remzi-arpacidusseau/ostep-code/tree/master/threads-intro)
 

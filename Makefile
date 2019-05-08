@@ -1,4 +1,4 @@
-targets = badcnt goodcnt goodcnt_mutex prodcons_mutex prodcons_sem simple_pipe shm
+targets = badcnt goodcnt goodcnt_mutex prodcons_mutex prodcons_sem simple_pipe shm sysV-msg
  
 CC = /usr/bin/gcc
 CFLAGS = -Wall -pthread
@@ -6,6 +6,7 @@ CFLAGS = -Wall -pthread
 src = $(wildcard *.c)
 hdr = $(wildcard *.h)
 obj = $(src:.c=.o)
+out = $(wildcard *.out)
 
 .PHONY: all
 all: $(targets)
@@ -21,4 +22,4 @@ format: $(hdr) $(src)
 
 .PHONY: clean
 clean:
-	@rm -f $(obj) $(main) $(targets)
+	@rm -f $(out) $(obj) $(main) $(targets)
