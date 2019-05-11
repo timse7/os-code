@@ -1,6 +1,9 @@
 # OS Code
 Code for my operating system lecture at University of Klagenfurt (https://itec.aau.at/)
 
+## ctshell.c
+A stripped-down shell named 'ctsh' ;)
+
 ## simple_pipe.c
 A simple example for fork + pipe
 
