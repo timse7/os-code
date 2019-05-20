@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
   pid_t pid;
   char cmd[100];
 
-  printf("Welcome to ctshell (end with 'quit'). Have fun..\n");
+  fprintf(stdout, "Welcome to ctshell (end with 'quit'). Have fun..\n");
 
   while (1) {
     printf("ctsh$ ");
@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
     if (cmd[strlen(cmd) - 1] == '\n')
       cmd[strlen(cmd) - 1] = '\0';
     if (0 == strcmp("quit", cmd)) {
-      printf("Bye, bye...\n");
+      fprintf(stdout, "Bye, bye...\n");
       exit(EXIT_SUCCESS);
     }
 
