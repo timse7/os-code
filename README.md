@@ -34,3 +34,5 @@ Producer-consumer problem using semaphore.h. It uses named semaphores as I have 
 ## prodcons_mutex.c
 Producer-consumer problem using phtread.h mutex and condition variables
 
+## file_copy.c
+Example program using file system calls
