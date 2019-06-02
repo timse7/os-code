@@ -1,4 +1,4 @@
-targets = badcnt goodcnt goodcnt_mutex prodcons_mutex prodcons_sem simple_pipe shm sysV-msg ctshell runner thread-shared-vars file_copy
+targets = badcnt goodcnt goodcnt_mutex prodcons_mutex prodcons_sem simple_pipe shm sysV-msg ctshell runner thread-shared-vars file_copy file_copy_mmap
  
 CC = /usr/bin/gcc
 CFLAGS = -Wall -pthread
