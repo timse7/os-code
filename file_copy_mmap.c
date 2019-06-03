@@ -12,7 +12,7 @@ size_t getFilesize(const char *filename);
 #define OUTPUT_MODE 0700
 
 int main(int argc, char *argv[]) {
-  int in_fd, out_fd, rc;
+  int in_fd, out_fd, wt_count, rc;
   size_t filesize;
   void *mmappedData;
 
@@ -32,7 +32,9 @@ int main(int argc, char *argv[]) {
   if (out_fd < 0)
     exit(3);
 
-  write(out_fd, mmappedData, filesize);
+  wt_count = write(out_fd, mmappedData, filesize);
+  if (wt_count < 0)
+	  exit(4);
 
   rc = munmap(mmappedData, filesize);
   assert(rc == 0);
