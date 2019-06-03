@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 
   wt_count = write(out_fd, mmappedData, filesize);
   if (wt_count < 0)
-	  exit(4);
+    exit(4);
 
   rc = munmap(mmappedData, filesize);
   assert(rc == 0);
