@@ -15,6 +15,9 @@ A stripped-down shell named 'ctsh' ;)
 ## simple_pipe.c
 A simple example for fork + pipe
 
+## pipe_duplex.c
+Duplex UNIX pipe example (slide 24): two pipes enable bidirectional communication between parent and child. Parent sends an integer to child; child doubles it and sends the result back.
+
 ## shm.c
 A simple shared memory example with race condition
 

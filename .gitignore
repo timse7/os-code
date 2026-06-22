@@ -9,6 +9,7 @@ goodcnt_mutex
 prodcons_mutex
 prodcons_sem
 simple_pipe
+pipe_duplex
 shm
 sysV-msg
 ctshell
