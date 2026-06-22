@@ -36,7 +36,7 @@ void producer() {
     }
     /* Messages may be lost if the message queue is full ! */
     if (-1 == (msgsnd(msqid, &pmbuf, MSGSIZE, IPC_NOWAIT)))
-      perror("\nMessage NOT delivered!\n");
+      perror("Message NOT delivered");
   }
 }
 
@@ -65,7 +65,7 @@ int main() {
 
   if (-1 == (msqid = msgget((ftok(".", '1')), IPC_CREAT | 0666))) {
     perror("msgget");
-    exit(-1);
+    exit(EXIT_FAILURE);
   }
 
   if (0 == (fork())) {

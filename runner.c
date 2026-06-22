@@ -1,7 +1,6 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 int sum;
 
@@ -29,5 +28,5 @@ void *runner(void *param) {
   sum = 0;
   for (i = 1; i <= upper; i++)
     sum += i;
-  pthread_exit(EXIT_SUCCESS);
+  return NULL;
 }

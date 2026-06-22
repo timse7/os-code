@@ -45,4 +45,4 @@ int main(int argc, char **argv) {
       waitpid(-1, NULL, 0);
     }
   }
-};
+}

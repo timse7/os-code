@@ -42,4 +42,4 @@ int main(int argc, char **argv) {
   close(myPipe[WRITE]);
   waitpid(-1, NULL, 0);
   exit(EXIT_SUCCESS);
-};
+}

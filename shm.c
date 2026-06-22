@@ -28,7 +28,7 @@ int main() {
         *shared_mem += 1;
         count++;
       }
-      printf("%ites inc value with %i!\n", i, count);
+      printf("%dtes inc value with %d!\n", i, count);
       shmdt(shared_mem);
       return EXIT_SUCCESS;
     }
@@ -36,7 +36,7 @@ int main() {
   for (i = 0; i < NUM_CHILDREN; i++) {
     waitpid(pid[i], NULL, 0);
   }
-  printf("Shared Memory = %i - MAXCOUNT = %i\n", *shared_mem, MAXCOUNT);
+  printf("Shared Memory = %d - MAXCOUNT = %d\n", *shared_mem, MAXCOUNT);
   shmdt(shared_mem);
   shmctl(shmID, IPC_RMID, 0);
   return EXIT_SUCCESS;

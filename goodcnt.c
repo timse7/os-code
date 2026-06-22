@@ -1,8 +1,9 @@
+#include <fcntl.h>
 #include <pthread.h>
+#include <semaphore.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-#include <semaphore.h>
+#include <sys/stat.h>
 
 int max;
 volatile int counter = 0; // shared global variable
@@ -33,7 +34,7 @@ int main(int argc, char *argv[]) {
       sem_open("/AAU_T1_SS2019", O_CREAT | O_EXCL, S_IRUSR | S_IWUSR, 1);
 
   pthread_t p1, p2;
-  printf("main: begin [counter = %d] [%x]\n", counter, (unsigned int)&counter);
+  printf("main: begin [counter = %d] [%p]\n", counter, (void *)&counter);
   pthread_create(&p1, NULL, mythread, "A");
   pthread_create(&p2, NULL, mythread, "B");
   // join waits for the threads to finish

@@ -30,12 +30,13 @@ int main(int argc, char *argv[]) {
   pthread_mutex_init(&mutex, NULL);
 
   pthread_t p1, p2;
-  printf("main: begin [counter = %d] [%x]\n", counter, (unsigned int)&counter);
+  printf("main: begin [counter = %d] [%p]\n", counter, (void *)&counter);
   pthread_create(&p1, NULL, mythread, "A");
   pthread_create(&p2, NULL, mythread, "B");
   // join waits for the threads to finish
   pthread_join(p1, NULL);
   pthread_join(p2, NULL);
   printf("main: done\n [counter: %d]\n [should: %d]\n", counter, max * 2);
+  pthread_mutex_destroy(&mutex);
   return 0;
 }

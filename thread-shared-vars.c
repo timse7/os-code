@@ -1,4 +1,5 @@
 #include <pthread.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -7,7 +8,7 @@ char **ptr; /* global */
 
 /* thread routine */
 void *thread(void *vargp) {
-  int myid = (int)vargp;
+  int myid = (int)(intptr_t)vargp;
   static int cnt = 0;
 
   printf("[%d]: %s (cnt=%d)\n", myid, ptr[myid], ++cnt);
@@ -21,6 +22,6 @@ int main() { /* main thread */
   char *msgs[100] = {"Hello from foo", "Hello from bar"};
   ptr = msgs;
   for (i = 0; i < 2; i++)
-    pthread_create(&tid[i], NULL, thread, (void *)i);
+    pthread_create(&tid[i], NULL, thread, (void *)(intptr_t)i);
   pthread_exit(NULL);
 }

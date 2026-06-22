@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
   max = atoi(argv[1]);
 
   pthread_t p1, p2;
-  printf("main: begin [counter = %d] [%x]\n", counter, (unsigned int)&counter);
+  printf("main: begin [counter = %d] [%p]\n", counter, (void *)&counter);
   pthread_create(&p1, NULL, mythread, "A");
   pthread_create(&p2, NULL, mythread, "B");
   // join waits for the threads to finish

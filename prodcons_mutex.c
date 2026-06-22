@@ -1,4 +1,3 @@
-#include <errno.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,7 +26,8 @@ int state;
 /* This buffer is shared between the threads */
 char *buffer;
 
-void producer() {
+void *producer(void *arg) {
+  (void)arg;
   char c[BUF_MAX_SIZE];
 
   printf("[P] Read up to %d chars (quit with 'end'): ", BUF_MAX_SIZE);
@@ -43,7 +43,7 @@ void producer() {
       pthread_cond_wait(&buffer_empty, &mutex);
 
     // Rewrite buffer
-    memcpy(buffer, &c, BUF_MAX_SIZE);
+    memcpy(buffer, c, BUF_MAX_SIZE);
 
     /* The buffer is full now, so tell the consumers */
     state = non_empty;
@@ -51,9 +51,10 @@ void producer() {
     pthread_cond_signal(&buffer_full);
     pthread_mutex_unlock(&mutex);
   }
+  return NULL;
 }
 
-void consumer(void *str) {
+void *consumer(void *str) {
   char c[BUF_MAX_SIZE];
 
   for (;;) {
@@ -63,7 +64,7 @@ void consumer(void *str) {
       pthread_cond_wait(&buffer_full, &mutex);
 
     // Read data from buffer
-    memcpy(&c, buffer, BUF_MAX_SIZE);
+    memcpy(c, buffer, BUF_MAX_SIZE);
 
     // The buffer is empty now, so tell the producer
     state = non_full;
@@ -74,6 +75,7 @@ void consumer(void *str) {
     // display content, outside of critical section
     printf("[C]  %s = %s\n", (char *)str, c);
   }
+  return NULL;
 }
 
 int main() {
@@ -90,15 +92,18 @@ int main() {
   pthread_mutex_init(&mutex, NULL);
 
   /* And create the 3 threads */
-  pthread_create(&producer_thread, NULL, (void *)&producer, NULL);
-  pthread_create(&consumer_thread1, NULL, (void *)&consumer, (void *)str1);
-  pthread_create(&consumer_thread2, NULL, (void *)&consumer, (void *)str2);
+  pthread_create(&producer_thread, NULL, producer, NULL);
+  pthread_create(&consumer_thread1, NULL, consumer, str1);
+  pthread_create(&consumer_thread2, NULL, consumer, str2);
 
   pthread_detach(consumer_thread1);
   pthread_detach(consumer_thread2);
   pthread_join(producer_thread, NULL);
 
   free(buffer);
+  pthread_mutex_destroy(&mutex);
+  pthread_cond_destroy(&buffer_full);
+  pthread_cond_destroy(&buffer_empty);
 
   return EXIT_SUCCESS;
 }
