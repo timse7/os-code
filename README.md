@@ -32,6 +32,7 @@ make format # auto-format source files (requires clang-format)
 |------|-------------|
 | `simple_pipe.c` | Half-duplex pipe: parent writes to child |
 | `pipe_duplex.c` | Duplex pipe: parent sends integer, child transforms and replies |
+| `pipe_named.c` | Named pipe (FIFO): same transfer as simple_pipe but via a filesystem FIFO created with `mkfifo()` |
 | `shm.c` | Shared memory example with race condition (System V) |
 | `sysV-msg.c` | System V message queue example |
 

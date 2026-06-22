@@ -10,6 +10,7 @@ prodcons_mutex
 prodcons_sem
 simple_pipe
 pipe_duplex
+pipe_named
 shm
 sysV-msg
 ctshell
