@@ -11,7 +11,7 @@
 #define BASH "bash"
 #define BASHOPTION "-c"
 
-int main(int argc, char **argv) {
+int main(void) {
 
   pid_t pid;
   char cmd[100];

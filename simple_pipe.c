@@ -9,7 +9,7 @@
 #define READ 0
 #define WRITE 1
 
-int main(int argc, char **argv) {
+int main(void) {
 
   int myPipe[2];
   pid_t pid;

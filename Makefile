@@ -1,7 +1,7 @@
 targets = badcnt goodcnt goodcnt_mutex prodcons_mutex prodcons_sem simple_pipe shm sysV-msg ctshell runner thread-shared-vars file_copy file_copy_mmap
- 
+
 CC = /usr/bin/gcc
-CFLAGS = -Wall -pthread
+CFLAGS = -Wall -Wextra -pthread
 
 src = $(wildcard *.c)
 hdr = $(wildcard *.h)
@@ -11,15 +11,14 @@ out = $(wildcard *.out)
 .PHONY: all
 all: $(targets)
 
-.PHONY: $(src)
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ ./$^
 
-.PHONY: format 
+.PHONY: format
 format: $(hdr) $(src)
 	@clang-format -i -fallback-style=WebKit -style=file $^  # uses custom `.clang-format`; WebKit as fallback
 	@echo "Source files formatted."
 
 .PHONY: clean
 clean:
-	@rm -f $(out) $(obj) $(main) $(targets)
+	@rm -f $(out) $(obj) $(targets)

@@ -30,6 +30,8 @@ void *producer(void *str) {
 
 #ifdef DEBUG
   printf("[P] %s started...\n", (char *)str);
+#else
+  (void)str;
 #endif
   char c;
   for (;;) {
@@ -105,7 +107,7 @@ void *consumer(void *str) {
   }
 }
 
-int main(int argc, char *argv[]) {
+int main(void) {
   char str0[] = "producer";
   char str1[] = "consumer1";
   char str2[] = "consumer2";
