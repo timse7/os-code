@@ -41,6 +41,7 @@ make format # auto-format source files (requires clang-format)
 | File | Description |
 |------|-------------|
 | `ctshell.c` | A stripped-down shell named 'ctsh' ;) |
+| `signals.c` | Signal handling example: parent and child exchange SIGUSR1/SIGUSR2 via explicit handlers, parent terminates child with SIGTERM |
 
 ## File I/O
 
