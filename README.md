@@ -9,44 +9,41 @@ make clean  # remove build artifacts
 make format # auto-format source files (requires clang-format)
 ```
 
-## ctshell.c
-A stripped-down shell named 'ctsh' ;)
+## Threading
 
-## simple_pipe.c
-A simple example for fork + pipe
+| File | Description |
+|------|-------------|
+| `badcnt.c` | Traditional race condition demo based on [ostep-code](https://github.com/remzi-arpacidusseau/ostep-code/tree/master/threads-intro) |
+| `goodcnt.c` | Race-free counter using named POSIX semaphores (macOS-compatible) |
+| `goodcnt_mutex.c` | Race-free counter using pthread mutex |
+| `thread-shared-vars.c` | Example of threads accessing another thread's stack |
+| `runner.c` | Simple program summing integers using pthreads |
 
-## pipe_duplex.c
-Duplex UNIX pipe example (slide 24): two pipes enable bidirectional communication between parent and child. Parent sends an integer to child; child doubles it and sends the result back.
+## Synchronization
 
-## shm.c
-A simple shared memory example with race condition
+| File | Description |
+|------|-------------|
+| `prodcons_mutex.c` | Producer-consumer problem using pthread mutex and condition variables |
+| `prodcons_sem.c` | Producer-consumer problem using named POSIX semaphores (macOS-compatible) |
 
-## sysV-msg.c
-A simple System V message queues example
+## IPC
 
-## runner.c
-A simple program using pthreads
+| File | Description |
+|------|-------------|
+| `simple_pipe.c` | Half-duplex pipe: parent writes to child |
+| `pipe_duplex.c` | Duplex pipe: parent sends integer, child transforms and replies |
+| `shm.c` | Shared memory example with race condition (System V) |
+| `sysV-msg.c` | System V message queue example |
 
-## thread-shared-vars.c
-Example of threads accessing another thread’s stack
+## Processes
 
-## badcnt.c
-Traditional badcnt.c program based on [ostep-code](https://github.com/remzi-arpacidusseau/ostep-code/tree/master/threads-intro)
+| File | Description |
+|------|-------------|
+| `ctshell.c` | A stripped-down shell named 'ctsh' ;) |
 
-## goodcnt.c
-Improved version of badcnt.c using semaphore.h. It uses named semaphores as I have programmed it on macOS which only supports named sempahores.
+## File I/O
 
-## goodcnt_mutex.c
-Improved version of badcnt.c using pthread.h mutex
-
-## prodcons_sem.c
-Producer-consumer problem using semaphore.h. It uses named semaphores as I have programmed it on macOS which only support named semaphores.
-
-## prodcons_mutex.c
-Producer-consumer problem using pthread.h mutex and condition variables
-
-## file_copy.c
-Example program using file system calls
-
-## file_copy_mmap.c
-file_copy example using mmap
+| File | Description |
+|------|-------------|
+| `file_copy.c` | File copy using read/write syscalls |
+| `file_copy_mmap.c` | File copy using mmap |
